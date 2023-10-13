@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+  web:
+    image: httpd:2.4.57-alpine3.18
+    container_name: web_${PROJECT_NAME}
+    env_file:
+      - .env
+    volumes:
+      - .:/var/www:delegated
+      - ./conf/httpd/extra/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf:delegated
+      - ./conf/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:delegated
+    working_dir: /var/www
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${TRAEFIK_NAME}.entrypoints=http"
+      - "traefik.http.routers.${TRAEFIK_NAME}.rule=Host(`${DRUPAL_DOMAIN}`)"
+      - "traefik.http.routers.${TRAEFIK_NAME}_secure.entrypoints=https"
+      - "traefik.http.routers.${TRAEFIK_NAME}_secure.rule=Host(`${DRUPAL_DOMAIN}`)"
+      - "traefik.http.routers.${TRAEFIK_NAME}_secure.tls=true"

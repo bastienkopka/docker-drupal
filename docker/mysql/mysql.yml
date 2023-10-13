@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  mysql:
+    image: mariadb:11.0.2
+    container_name: mysql_${PROJECT_NAME}
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ./data/db:/var/lib/mysql:delegated
+
+  web:
+    depends_on:
+      - mysql

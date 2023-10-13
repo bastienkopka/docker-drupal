@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  php:
+    build:
+      context: ./docker/php
+      args:
+        uid: ${UID}
+        gid: ${GID}
+    container_name: php_${PROJECT_NAME}
+    env_file:
+      - ./.env
+    volumes:
+      - .:/var/www:delegated
+      - ~/.cache/composer/:/root/.composer/cache/
+      - ./conf/php/php.ini:/usr/local/etc/php/php.ini:delegated
+    extra_hosts:
+      - host.docker.internal:${DOCKER_BRIDGE_GATEWAY_IP}
+
+  web:
+    depends_on:
+      - php

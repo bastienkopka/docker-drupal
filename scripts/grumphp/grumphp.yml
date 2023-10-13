@@ -1,0 +1,40 @@
+grumphp:
+  process_timeout: 240
+  git_hook_variables:
+    VAGRANT_PROJECT_DIR: /var/www/app/
+    EXEC_GRUMPHP_COMMAND: docker compose run -T --rm --no-deps php
+  ascii:
+    failed: scripts/grumphp/grumphp_ko.txt
+    succeeded: scripts/grumphp/grumphp_ok.txt
+  tasks:
+    composer:
+      no_check_all: true
+    phpcs:
+      standard:
+        - vendor/drupal/coder/coder_sniffer/Drupal
+        - vendor/drupal/coder/coder_sniffer/DrupalPractice
+      triggered_by:
+        - inc
+        - info
+        - install
+        - module
+        - php
+        - profile
+        - test
+        - theme
+        - yml
+    phpstan:
+      configuration: scripts/quality/phpstan/phpstan.neon
+      memory_limit: "-1"
+      use_grumphp_paths: true
+      triggered_by:
+        - inc
+        - info
+        - install
+        - module
+        - php
+        - profile
+        - test
+        - theme
+      ignore_patterns:
+        - conf/drupal

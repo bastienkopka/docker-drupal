@@ -1,0 +1,9 @@
+version: "3.7"
+
+services:
+  node:
+    image: node:20.5-alpine3.18
+    container_name: node_${PROJECT_NAME}
+    tty: true
+    volumes:
+      - .:/var/www:delegated

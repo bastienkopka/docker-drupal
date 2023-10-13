@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<ruleset name="project">
+  <file>../../../conf/drupal</file>
+  <file>../../../app/modules/custom</file>
+  <file>../../../app/themes/custom</file>
+
+  <arg name="basepath" value="."/>
+  <arg name="colors"/>
+  <arg name="extensions" value="css,inc,info,install,md,module,php,profile,test,theme,txt,yml"/>
+  <!--  Official extensions. -->
+  <!--  <arg name="extensions" value="inc,install,module,php,profile,test,theme,yml"/>-->
+  <arg name="parallel" value="75"/>
+  <arg value="p"/>
+
+  <!-- Ignore various version control directories. -->
+  <exclude-pattern>*/\.git/*</exclude-pattern>
+  <exclude-pattern>*/\.svn/*</exclude-pattern>
+  <exclude-pattern>*/\.hg/*</exclude-pattern>
+  <exclude-pattern>*/\.bzr/*</exclude-pattern>
+
+  <exclude-pattern>*/dist*</exclude-pattern>
+  <exclude-pattern>*/node_modules*</exclude-pattern>
+
+  <!-- Drupal coding standards. -->
+  <rule ref="Drupal"/>
+  <rule ref="DrupalPractice"/>
+
+  <rule ref="Generic.PHP.RequireStrictTypes"/>
+  <rule ref="Squiz.PHP.Eval"/>
+</ruleset>

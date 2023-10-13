@@ -1,0 +1,11 @@
+parameters:
+  level: max
+  inferPrivatePropertyTypeFromConstructor: true
+  reportUnmatchedIgnoredErrors: false
+  checkMissingIterableValueType: false
+  paths:
+    - ../../../app/modules/custom
+    - ../../../app/themes/custom
+  excludePaths:
+    - */sites/default/*
+    - */tests/*

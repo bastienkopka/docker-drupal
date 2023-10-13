@@ -1,0 +1,33 @@
+/app/core
+/app/libraries
+/app/modules/contrib
+/app/themes/contrib
+/app/profiles/contrib
+/app/translations/contrib
+/app/.eslintignore
+/app/.ht.router.php
+/app/.htaccess
+/app/autoload.php
+/app/index.php
+/app/robots.txt
+
+# Drupal default settings.
+/app/sites/default/default.services.yml
+/app/sites/default/default.settings.php
+/app/sites/default/settings.php
+/app/sites/development.services.yml
+/app/sites/example.settings.local.php
+/app/sites/example.sites.php
+/app/sites/default/files/
+/app/sites/simpletest/
+
+.editorconfig
+
+# Docker files.
+.env
+docker-compose.yml
+/data/db/
+
+# Other files.
+/vendor/
+/.idea/
