@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   node:
-    image: node:20.5-alpine3.18
+    image: node:21.4.0-alpine3.18
     container_name: node_${PROJECT_NAME}
     tty: true
     volumes:

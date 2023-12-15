@@ -1,4 +1,4 @@
-FROM php:8.2.8-fpm-alpine3.18 as php
+FROM php:8.3.0-fpm-alpine3.18 as php
 
 ENV TIMEZONE 'Europe/Paris'
 ENV DRUSH_VERSION latest
