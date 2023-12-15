@@ -58,7 +58,7 @@ $config['locale.settings']['translation']['path'] = 'translations/contrib';
 $config['locale.settings']['translation']['use_source'] = 'local';
 
 // Redis.
-if ($_ENV['DRUPAL_HAS_REDIS'] === 'true') {
+if (extension_loaded('redis')) {
   $settings['redis.connection']['interface'] = $_ENV['DRUPAL_REDIS_INTERFACE'];
   $settings['redis.connection']['host'] = $_ENV['DRUPAL_REDIS_HOST'];
   $settings['redis.connection']['port'] = $_ENV['DRUPAL_REDIS_PORT'];
