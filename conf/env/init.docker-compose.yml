@@ -2,19 +2,14 @@ version: "3.7"
 
 services:
   web:
-    image: httpd:2.4.57-alpine3.18
+    image: nginx:1.25.3-alpine
     container_name: web_${PROJECT_NAME}
     env_file:
       - .env
     volumes:
       - .:/var/www:delegated
-      - ./conf/httpd/extra/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf:delegated
-      - ./conf/httpd/httpd.conf:/usr/local/apache2/conf/httpd.conf:delegated
+      - ./conf/nginx/nginx.conf:/etc/nginx/nginx.conf:delegated
+      - ./conf/nginx/default.conf:/etc/nginx/templates/default.conf.template:delegated
     working_dir: /var/www
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.${TRAEFIK_NAME}.entrypoints=http"
-      - "traefik.http.routers.${TRAEFIK_NAME}.rule=Host(`${DRUPAL_DOMAIN}`)"
-      - "traefik.http.routers.${TRAEFIK_NAME}_secure.entrypoints=https"
-      - "traefik.http.routers.${TRAEFIK_NAME}_secure.rule=Host(`${DRUPAL_DOMAIN}`)"
-      - "traefik.http.routers.${TRAEFIK_NAME}_secure.tls=true"
+    ports:
+      - "8081:80"

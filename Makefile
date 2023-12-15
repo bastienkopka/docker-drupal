@@ -32,6 +32,8 @@ docker-clean: docker-stop
 	sudo rm -rf docker-compose.yml
 	sudo rm -rf data/db/
 
+docker-restart: docker-stop docker-up
+
 docker-shell:
 	$(DOCKER_COMPOSE) exec -u $(DOCKER_USERNAME) php sh
 

@@ -6,6 +6,9 @@ ENV DRUSH_VERSION latest
 ARG uid
 ARG gid
 
+# Composer.
+COPY --from=composer:2.4.4 /usr/bin/composer /usr/bin/composer
+
 RUN set -eux ; \
     \
     apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
@@ -50,15 +53,23 @@ RUN set -eux ; \
     apk del .build-deps
 
 RUN apk add --update --no-cache --virtual .build-dependencies $PHPIZE_DEPS \
-  && pecl install apcu redis uploadprogress xdebug-3.2.2 \
-  && docker-php-ext-enable apcu redis uploadprogress xdebug \
+  && pecl install apcu redis uploadprogress \
+  && docker-php-ext-enable apcu redis uploadprogress \
   && pecl clear-cache \
   && apk del .build-dependencies
 
 # Add the user to the group.
 RUN addgroup -g $gid -S app && adduser -u $uid -S app -G app
 
-# Composer.
-COPY --from=composer:2.4.4 /usr/bin/composer /usr/bin/composer
-
 WORKDIR /var/www
+
+
+FROM php as dev
+
+RUN apk add --update --no-cache --virtual .build-dependencies $PHPIZE_DEPS \
+  && pecl install xdebug-3.2.2 \
+  && docker-php-ext-enable xdebug \
+  && pecl clear-cache \
+  && apk del .build-dependencies
+
+COPY conf/php/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
