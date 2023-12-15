@@ -32,7 +32,6 @@ $settings['allow_authorize_operations'] = FALSE;
 
 // Location of configuration files.
 $settings['config_sync_directory'] = $app_root . '/../conf/drupal/default/sync';
-$config['config_split.config_split.dev']['status'] = TRUE;
 
 // Prevent deletion of orphan files.
 // @todo Remove this line when the following issues will be fixed:
