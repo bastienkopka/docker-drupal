@@ -7,10 +7,11 @@ ARG uid
 ARG gid
 
 # Composer.
-COPY --from=composer:2.4.4 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.6.6 /usr/bin/composer /usr/bin/composer
 
 RUN set -eux ; \
     \
+    apk update && apk upgrade ; \
     apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
         icu-dev \
         freetype-dev \
@@ -67,7 +68,7 @@ WORKDIR /var/www
 FROM php as dev
 
 RUN apk add --update --no-cache --virtual .build-dependencies $PHPIZE_DEPS \
-  && pecl install xdebug-3.2.2 \
+  && pecl install xdebug-3.3.1 \
   && docker-php-ext-enable xdebug \
   && pecl clear-cache \
   && apk del .build-dependencies

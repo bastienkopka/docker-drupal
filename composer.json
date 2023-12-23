@@ -18,9 +18,9 @@
         "composer/installers": "2.2.0",
         "cweagans/composer-patches": "1.7.3",
         "drupal-composer/drupal-l10n": "2.0.3",
-        "drupal/core-composer-scaffold": "10.1.7",
-        "drupal/core-project-message": "10.1.7",
-        "drupal/core-recommended": "10.1.7",
+        "drupal/core-composer-scaffold": "10.2.0",
+        "drupal/core-project-message": "10.2.0",
+        "drupal/core-recommended": "10.2.0",
         "drupal/redis": "1.7.0",
         "drupal/remove_http_headers": "2.1.0",
         "drupal/seckit": "2.0.1",
@@ -29,9 +29,9 @@
     },
     "require-dev": {
         "drupal/coder": "8.3.22",
-        "drupal/core-dev": "10.1.7",
+        "drupal/core-dev": "10.2.0",
         "mglaman/phpstan-drupal": "1.*",
-        "phpro/grumphp": "2.3.0",
+        "phpro/grumphp": "2.4.0",
         "phpspec/prophecy-phpunit": "2.1.0",
         "phpstan/phpstan-deprecation-rules": "1.1.4",
         "roave/security-advisories": "dev-master"
@@ -58,7 +58,8 @@
             "drupal-composer/drupal-l10n": true,
             "phpro/grumphp": true,
             "phpstan/extension-installer": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "php-http/discovery": true
         },
         "optimize-autoloader": true,
         "sort-packages": true
