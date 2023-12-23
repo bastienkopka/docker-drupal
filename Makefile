@@ -49,4 +49,4 @@ quality-phpstan:
 quality-phpunit:
 	$(DOCKER_COMPOSE) exec -u $(DOCKER_USERNAME) php bash ./scripts/run-phpunit.sh
 	$(DOCKER_COMPOSE) exec php ./vendor/bin/phpunit \
-		--configuration=./scripts/quality/phpunit/phpunit.xml
+		--configuration=./scripts/quality/phpunit/

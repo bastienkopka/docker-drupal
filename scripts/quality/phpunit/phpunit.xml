@@ -15,13 +15,13 @@
     <!-- To have browsertest output use an alternative base URL. -->
     <env name="BROWSERTEST_OUTPUT_BASE_URL" value="http://web"/>
     <!-- Example BROWSERTEST_OUTPUT_DIRECTORY value: /path/to/webroot/sites/simpletest/browser_output -->
-    <env name="BROWSERTEST_OUTPUT_DIRECTORY" value="app/sites/simpletest/browser_output"/>
+    <env name="BROWSERTEST_OUTPUT_DIRECTORY" value="/tmp"/>
     <!-- Default MINK_DRIVER_ARGS_WEBDRIVER options-->
     <env name="MINK_DRIVER_ARGS_WEBDRIVER" value='["chrome", {"browserName":"chrome","chromeOptions":{"args":["--disable-gpu","--headless"]}}, "http://chrome:9515"]'/>
     <!-- Example SIMPLETEST_BASE_URL value: http://localhost -->
     <env name="SIMPLETEST_BASE_URL" value="http://web"/>
     <!-- Example SIMPLETEST_DB value: mysql://username:password@localhost/databasename -->
-    <env name="SIMPLETEST_DB" value="mysql://bakop:bakop@mysql/bakop"/>
+    <env name="SIMPLETEST_DB" value="mysql://template:template@mysql/template"/>
     <!-- To disable deprecation testing completely uncomment the next line. -->
     <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled"/>
   </php>
